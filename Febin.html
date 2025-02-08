@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .yes-btn {
+            background-color: green;
+            color: white;
+        }
+        .no-btn {
+            background-color: red;
+            color: white;
+            position: absolute;
+        }
+    </style>
+    <script>
+        function showSuccess() {
+            alert("Yay! You made my day! Love you! ❤️");
+        }
+
+        function moveNoButton() {
+            let noButton = document.getElementById("no-btn");
+            let yesButton = document.getElementById("yes-btn");
+            
+            // Move "No" button randomly
+            let x = Math.random() * 300;
+            let y = Math.random() * 300;
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+
+            // Increase "Yes" button size
+            yesButton.style.transform = "scale(1.2)";
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="question">Will you be my Valentine? ❤️</div>
+        <button class="btn yes-btn" id="yes-btn" onclick="showSuccess()">Yes</button>
+        <button class="btn no-btn" id="no-btn" onmouseover="moveNoButton()">No</button>
+    </div>
+
+</body>
+</html>
