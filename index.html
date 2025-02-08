@@ -6,33 +6,107 @@
     <title>Will You Be My Valentine?</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
             margin-top: 100px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            overflow: hidden;
         }
+
         .container {
             position: relative;
             display: inline-block;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
         .question {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #d14d72;
         }
+
         .btn {
-            font-size: 20px;
-            padding: 10px 20px;
+            font-size: 22px;
+            padding: 15px 25px;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
+            border-radius: 8px;
         }
+
         .yes-btn {
-            background-color: green;
+            background-color: #ff6f61;
             color: white;
         }
+
         .no-btn {
-            background-color: red;
+            background-color: #ff3d3d;
             color: white;
             position: absolute;
+            transition: transform 0.2s ease, left 0.2s, top 0.2s;
+        }
+
+        .yes-btn:hover {
+            background-color: #ff4f50;
+            transform: scale(1.1);
+        }
+
+        .no-btn:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .heart-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            transform: rotate(45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(45deg);
+            }
+            100% {
+                transform: translateY(0) rotate(45deg);
+            }
         }
     </style>
     <script>
@@ -44,24 +118,35 @@
             let noButton = document.getElementById("no-btn");
             let yesButton = document.getElementById("yes-btn");
             
-            // Move "No" button randomly
             let x = Math.random() * 300;
             let y = Math.random() * 300;
             noButton.style.left = x + "px";
             noButton.style.top = y + "px";
 
-            // Increase "Yes" button size
             yesButton.style.transform = "scale(1.2)";
         }
+
+        // Create floating hearts
+        function createHearts() {
+            const heartContainer = document.querySelector('.heart-bg');
+            for (let i = 0; i < 50; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                heartContainer.appendChild(heart);
+            }
+        }
+
+        window.onload = createHearts;
     </script>
 </head>
 <body>
-
+    <div class="heart-bg"></div>
     <div class="container">
         <div class="question">Will you be my Valentine? ❤️</div>
         <button class="btn yes-btn" id="yes-btn" onclick="showSuccess()">Yes</button>
         <button class="btn no-btn" id="no-btn" onmouseover="moveNoButton()">No</button>
     </div>
-
 </body>
 </html>
