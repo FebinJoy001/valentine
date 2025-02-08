@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Special Question for You ❤️</title>
+    <title>A Special Question for You ❤️</title>
     <style>
-        /* Romantic Background */
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
@@ -14,48 +13,47 @@
             background: linear-gradient(120deg, #ff9a9e, #fad0c4);
         }
 
-        /* Floating Hearts Animation */
-        @keyframes floating-hearts {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+        @keyframes floating-elements {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
         }
 
-        .heart {
+        .element {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             background-size: contain;
-            animation: floating-hearts 5s linear infinite;
+            animation: floating-elements 6s linear infinite;
         }
 
-        /* Multi-Colored Hearts */
-        .heart:nth-child(odd) { background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png'); } /* Red */
-        .heart:nth-child(even) { background: url('https://cdn-icons-png.flaticon.com/512/2921/2921825.png'); } /* Pink */
-        .heart:nth-child(3n) { background: url('https://cdn-icons-png.flaticon.com/512/1157/1157109.png'); } /* Blue */
-        .heart:nth-child(5n) { background: url('https://cdn-icons-png.flaticon.com/512/2917/2917999.png'); } /* Gold */
-        .heart:nth-child(7n) { background: url('https://cdn-icons-png.flaticon.com/512/1157/1157106.png'); } /* Purple */
+        .heart { background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center; }
+        .flower { background: url('https://cdn-icons-png.flaticon.com/512/990/990882.png') no-repeat center; }
 
-        /* Romantic Container */
         .container {
-            position: relative;
+            position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: rgba(255, 192, 203, 0.9);
-            padding: 40px;
+            padding: 50px;
             border-radius: 20px;
             box-shadow: 0 0 20px pink;
-            display: inline-block;
             animation: fadeIn 2s ease-in-out;
         }
 
         .question {
-            font-size: 30px;
+            font-size: 32px;
             font-weight: bold;
             color: #ff1493;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            font-size: 18px;
+            color: #ff6b81;
             margin-bottom: 20px;
         }
 
-        /* Button Styling */
         .btn {
             font-size: 20px;
             padding: 12px 25px;
@@ -78,67 +76,52 @@
             position: absolute;
         }
 
-        /* Hover Effects */
         .yes-btn:hover {
             background-color: #ff1493;
             transform: scale(1.2);
         }
 
-        .no-btn:hover {
-            transform: rotate(10deg);
-        }
+        .no-btn:hover { transform: rotate(10deg); }
 
-        /* Fade-in Animation */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
     </style>
-
     <script>
         function showSuccess() {
-            alert("OMG! You just made my world sparkle! 💖💃 Love you forever! 😘");
+            alert("Yay! You just made my world brighter! 💖 Love you forever! 😘");
         }
 
         function moveNoButton() {
             let noButton = document.getElementById("no-btn");
-            let yesButton = document.getElementById("yes-btn");
-
-            // Move "No" button randomly
             let x = Math.random() * 300;
             let y = Math.random() * 300;
             noButton.style.left = x + "px";
             noButton.style.top = y + "px";
-
-            // Increase "Yes" button size
-            yesButton.style.transform = "scale(1.3)";
         }
 
-        // Function to create floating hearts
-        function createHearts() {
+        function createFloatingElements() {
             for (let i = 0; i < 20; i++) {
-                let heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-                document.body.appendChild(heart);
-                
-                setTimeout(() => {
-                    heart.remove();
-                }, 5000);
+                let element = document.createElement("div");
+                element.classList.add("element");
+                element.classList.add(i % 2 === 0 ? "heart" : "flower");
+                element.style.left = Math.random() * 100 + "vw";
+                element.style.animationDuration = (Math.random() * 2 + 4) + "s";
+                document.body.appendChild(element);
+                setTimeout(() => { element.remove(); }, 6000);
             }
         }
 
-        setInterval(createHearts, 1000);
+        setInterval(createFloatingElements, 1000);
     </script>
 </head>
 <body>
-
     <div class="container">
-        <div class="question">Will You Be My Better Half? 💍💕</div>
+        <div class="question">Will You Be My Forever Love? 💍💕</div>
+        <div class="message">Today is a special day, and so are you! You make my heart race, my world brighter, and my dreams sweeter. Let's make this moment unforgettable! 💖</div>
         <button class="btn yes-btn" id="yes-btn" onclick="showSuccess()">Yes 💖</button>
         <button class="btn no-btn" id="no-btn" onmouseover="moveNoButton()">No 😢</button>
     </div>
-
 </body>
 </html>
