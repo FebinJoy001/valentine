@@ -3,101 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine?</title>
+    <title>Will You Be My Valentine? ❤️</title>
     <style>
+        /* Romantic Background with Hearts Animation */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             text-align: center;
             margin: 0;
-            padding: 0;
             overflow: hidden;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            background: url('https://i.imgur.com/VbgGLO4.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
+        /* Floating Hearts */
+        @keyframes floating-hearts {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        .hearts {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://i.imgur.com/MI84qHd.png') no-repeat center;
+            background-size: contain;
+            animation: floating-hearts 5s linear infinite;
+        }
+
+        /* Question Box */
         .container {
             position: relative;
-            top: 40%;
+            top: 50%;
             transform: translateY(-50%);
+            background: rgba(255, 192, 203, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px pink;
+            display: inline-block;
         }
 
         .question {
-            font-size: 36px;
-            color: #fff;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff1493;
+            margin-bottom: 20px;
         }
 
+        /* Button Styling */
         .btn {
-            font-size: 22px;
+            font-size: 20px;
             padding: 12px 25px;
             border: none;
-            border-radius: 25px;
             cursor: pointer;
-            margin: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            border-radius: 15px;
         }
 
         .yes-btn {
-            background-color: #ff6f61;
+            background-color: #ff69b4;
             color: white;
-        }
-
-        .yes-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.6);
         }
 
         .no-btn {
-            background-color: #ff4757;
+            background-color: red;
             color: white;
             position: absolute;
         }
 
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: pink;
-            transform: rotate(-45deg);
-            animation: float 5s infinite ease-in-out;
-            opacity: 0.7;
+        /* Hover Effects */
+        .yes-btn:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
         }
 
-        .heart:before,
-        .heart:after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: pink;
+        .no-btn:hover {
+            transform: rotate(10deg);
+        }
+
+        /* Puppy & Kitten Images */
+        .cute-animals {
+            margin-top: 20px;
+        }
+
+        .cute-animals img {
+            width: 100px;
+            height: auto;
+            margin: 10px;
             border-radius: 50%;
-        }
-
-        .heart:before {
-            top: -10px;
-            left: 0;
-        }
-
-        .heart:after {
-            left: 10px;
-            top: 0;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(-45deg); opacity: 0.7; }
-            50% { transform: translateY(-200px) rotate(-45deg); opacity: 0.3; }
-            100% { transform: translateY(-400px) rotate(-45deg); opacity: 0; }
+            box-shadow: 0 0 15px white;
         }
     </style>
+
     <script>
         function showSuccess() {
-            alert("Yay! You made my day! Love you! ❤️");
+            alert("OMG! You just made my heart dance! 💃✨ \nLove you forever! ❤️🥰");
         }
 
         function moveNoButton() {
             let noButton = document.getElementById("no-btn");
             let yesButton = document.getElementById("yes-btn");
-            
+
             // Move "No" button randomly
             let x = Math.random() * 300;
             let y = Math.random() * 300;
@@ -106,30 +112,40 @@
 
             // Increase "Yes" button size
             yesButton.style.transform = "scale(1.2)";
-
-            // Restore size after delay
-            setTimeout(() => {
-                yesButton.style.transform = "scale(1)";
-            }, 300);
         }
 
-        window.onload = function() {
+        // Function to create floating hearts
+        function createHearts() {
             for (let i = 0; i < 20; i++) {
-                let heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.style.left = Math.random() * window.innerWidth + 'px';
-                heart.style.top = window.innerHeight + 'px';
+                let heart = document.createElement("div");
+                heart.classList.add("hearts");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
                 document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
             }
         }
+
+        setInterval(createHearts, 1000);
     </script>
 </head>
 <body>
 
     <div class="container">
-        <div class="question">Will you be my Valentine? ❤️</div>
-        <button class="btn yes-btn" id="yes-btn" onclick="showSuccess()">Yes</button>
-        <button class="btn no-btn" id="no-btn" onmouseover="moveNoButton()">No</button>
+        <div class="question">Will you be my Valentine? ❤️🥰</div>
+        <button class="btn yes-btn" id="yes-btn" onclick="showSuccess()">Yes 💕</button>
+        <button class="btn no-btn" id="no-btn" onmouseover="moveNoButton()">No 😢</button>
+    </div>
+
+    <!-- Cute Animals -->
+    <div class="cute-animals">
+        <img src="https://i.imgur.com/T2K0wYA.jpg" alt="Puppy">
+        <img src="https://i.imgur.com/WqPpG5q.jpg" alt="Kitten">
+        <img src="https://i.imgur.com/DLtl3RD.jpg" alt="Puppy">
+        <img src="https://i.imgur.com/lGFehCh.jpg" alt="Kitten">
     </div>
 
 </body>
