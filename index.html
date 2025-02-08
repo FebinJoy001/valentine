@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? ❤️</title>
+    <title>Will You Be My Better Half? ❤️</title>
     <style>
         /* Romantic Background */
         body {
@@ -11,7 +11,7 @@
             text-align: center;
             margin: 0;
             overflow: hidden;
-            background: url('https://wallpapercave.com/wp/wp9123943.jpg') no-repeat center center fixed;
+            background: url('https://wallpapercave.com/wp/wp8520192.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -25,17 +25,23 @@
             position: absolute;
             width: 30px;
             height: 30px;
-            background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
             background-size: contain;
             animation: floating-hearts 5s linear infinite;
         }
 
-        /* Box for Question */
+        /* Multi-Colored Hearts */
+        .heart:nth-child(odd) { background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png'); } /* Red */
+        .heart:nth-child(even) { background: url('https://cdn-icons-png.flaticon.com/512/2921/2921825.png'); } /* Pink */
+        .heart:nth-child(3n) { background: url('https://cdn-icons-png.flaticon.com/512/1157/1157109.png'); } /* Blue */
+        .heart:nth-child(5n) { background: url('https://cdn-icons-png.flaticon.com/512/2917/2917999.png'); } /* Gold */
+        .heart:nth-child(7n) { background: url('https://cdn-icons-png.flaticon.com/512/1157/1157106.png'); } /* Purple */
+
+        /* Romantic Container */
         .container {
             position: relative;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 182, 193, 0.9);
+            background: rgba(255, 192, 203, 0.9);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 0 20px pink;
@@ -76,27 +82,27 @@
         /* Hover Effects */
         .yes-btn:hover {
             background-color: #ff1493;
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
 
         .no-btn:hover {
             transform: rotate(10deg);
         }
 
-        /* Cute Animals Section */
-        .cute-animals {
+        /* Romantic Stickers */
+        .romantic-stickers {
             margin-top: 20px;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cute-animals img {
+        .romantic-stickers img {
             width: 120px;
             height: auto;
             margin: 10px;
-            border-radius: 50%;
-            box-shadow: 0 0 15px white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
             animation: fadeIn 3s ease-in-out;
         }
 
@@ -109,7 +115,7 @@
 
     <script>
         function showSuccess() {
-            alert("You just made my world sparkle! 💖💃 Love you forever! 😘");
+            alert("OMG! You just made my world sparkle! 💖💃 Love you forever! 😘");
         }
 
         function moveNoButton() {
@@ -128,7 +134,7 @@
 
         // Function to create floating hearts
         function createHearts() {
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 20; i++) {
                 let heart = document.createElement("div");
                 heart.classList.add("heart");
                 heart.style.left = Math.random() * 100 + "vw";
@@ -147,17 +153,17 @@
 <body>
 
     <div class="container">
-        <div class="question">Will you be my Valentine? 💞💘</div>
-        <button class="btn yes-btn" id="yes-btn" onclick="showSuccess()">Yes 💕</button>
+        <div class="question">Will You Be My Better Half? 💍💕</div>
+        <button class="btn yes-btn" id="yes-btn" onclick="showSuccess()">Yes 💖</button>
         <button class="btn no-btn" id="no-btn" onmouseover="moveNoButton()">No 😢</button>
     </div>
 
-    <!-- Cute Puppies & Kittens -->
-    <div class="cute-animals">
-        <img src="https://i.pinimg.com/originals/38/07/fb/3807fbc9326bdb6e877f431594d8352a.jpg" alt="Puppy">
-        <img src="https://i.pinimg.com/originals/7b/36/4f/7b364f28c6ff7b4a4f85b7a4f620bce5.jpg" alt="Kitten">
-        <img src="https://i.pinimg.com/originals/bc/7a/89/bc7a89e9de3c9226851d15c1c3ad8e1d.jpg" alt="Puppy">
-        <img src="https://i.pinimg.com/originals/2b/0e/cd/2b0ecd5f5c124ed2ea7ef29df8d3b2c4.jpg" alt="Kitten">
+    <!-- Romantic Stickers & Flowers -->
+    <div class="romantic-stickers">
+        <img src="https://i.imgur.com/Q9z5XaR.png" alt="Love Sticker">
+        <img src="https://i.imgur.com/FJgy4c6.png" alt="Roses">
+        <img src="https://i.imgur.com/N8KlP6d.png" alt="Romantic Couple">
+        <img src="https://i.imgur.com/Ah3EYkM.png" alt="More Hearts">
     </div>
 
 </body>
