@@ -26,11 +26,18 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 0 25px rgba(255, 20, 147, 0.9);
+            padding: 80px;
+            border-radius: 30px;
+            box-shadow: 0 0 35px rgba(255, 20, 147, 0.9);
             text-align: center;
             animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .success-popup {
+            font-size: 40px;
+            color: #ff1493;
+            font-weight: bold;
+            padding: 100px;
         }
 
         .question {
@@ -101,9 +108,14 @@
         }
 
         function showSuccessPopup() {
-            document.querySelector(".message-box").style.display = "none";
-            document.querySelector(".success-popup").style.display = "block";
-            generateFloatingHearts(".success-popup");
+                document.querySelector(".message-box").style.display = "none";
+        	document.querySelector(".success-popup").style.display = "block";
+        	generateFloatingHearts(".success-popup");
+
+        	// Send data to Google Sheets
+        	fetch("https://script.google.com/macros/s/AKfycbzyaU94TYeNVNtThED3LZELjop6QRCUDDkxA1WKuJRApT7VWpI6FrMqUVmCaSjJnFAN/exec?name=UserClickedYes")
+        	    .then(response => response.text())
+        	    .then(data => console.log(data));
         }
 
         function growYesShrinkNo() {
@@ -128,7 +140,7 @@
             container.classList.add("floating-container");
             document.querySelector(containerSelector).appendChild(container);
 
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 let heart = document.createElement("div");
                 heart.classList.add("heart");
                 heart.style.left = Math.random() * 100 + "vw";
