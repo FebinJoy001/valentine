@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,6 +39,21 @@
             color: #ff1493;
             font-weight: bold;
             padding: 100px;
+        }
+
+        .success-popup span {
+            display: block;
+            font-size: 50px;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 15px #ff4500, 0 0 30px #ff6347;
+            margin-top: 15px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff4500, 0 0 20px #ff6347; }
+            to { text-shadow: 0 0 20px #ff6347, 0 0 40px #ff4500; }
         }
 
         .question {
@@ -108,14 +124,19 @@
         }
 
         function showSuccessPopup() {
-                document.querySelector(".message-box").style.display = "none";
-        	document.querySelector(".success-popup").style.display = "block";
-        	generateFloatingHearts(".success-popup");
+            document.querySelector(".message-box").style.display = "none";
+            document.querySelector(".success-popup").style.display = "block";
+            generateFloatingHearts(".success-popup");
 
-        	// Send data to Google Sheets
-        	fetch("https://script.google.com/macros/s/AKfycbzyaU94TYeNVNtThED3LZELjop6QRCUDDkxA1WKuJRApT7VWpI6FrMqUVmCaSjJnFAN/exec?name=UserClickedYes")
-        	    .then(response => response.text())
-        	    .then(data => console.log(data));
+            // Send data to FormSubmit (Logs responses + Sends email)
+            fetch("https://formsubmit.co/febinjoy2001@gmail.com", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ response: "Yes", device: navigator.userAgent })
+            })
+            .then(response => response.text())
+            .then(data => console.log("Response sent:", data))
+            .catch(error => console.error("Error:", error));
         }
 
         function growYesShrinkNo() {
@@ -150,6 +171,7 @@
         }
     </script>
 </head>
+
 <body>
     <button class="btn" onclick="showMessageBox()">Tap for a Surprise! ❤️</button>
 
@@ -165,6 +187,10 @@
         <button class="btn no-btn" onclick="growYesShrinkNo()">No 😢</button>
     </div>
 
-    <div class="success-popup">Yay! I love you forever! 😘💕</div>
+    <div class="success-popup">
+        Yay! I love you forever! 😘💕<br>
+        <span>Happy Valentine's Day! ❤️</span>
+    </div>
 </body>
+
 </html>
