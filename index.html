@@ -20,6 +20,46 @@
             height: 100vh;
         }
 
+        /* Login Modal Styles */
+        .login-modal {
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.7);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .login-modal input {
+            font-size: 20px;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #ff1493;
+            width: 80%;
+        }
+
+        .login-modal button {
+            background-color: #ff1493;
+            color: white;
+            font-size: 22px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .login-modal button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Valentine Surprise Styles */
         .message-box, .success-popup {
             display: none;
             position: fixed;
@@ -118,6 +158,7 @@
         }
     </style>
     <script>
+        // Show Valentine Surprise after login
         function showMessageBox() {
             document.querySelector(".message-box").style.display = "block";
             generateFloatingHearts(".message-box");
@@ -169,13 +210,32 @@
                 container.appendChild(heart);
             }
         }
+
+        // Login Validation Function
+        function validateLogin() {
+            const userName = document.getElementById("username").value;
+            if (userName.toLowerCase() === "amanda") {
+                document.querySelector(".login-modal").style.display = "none";
+                document.querySelector(".message-box").style.display = "block";
+            } else {
+                alert("Incorrect name! Please enter 'amanda'.");
+            }
+        }
     </script>
 </head>
 
 <body>
-    <button class="btn" onclick="showMessageBox()">Tap for a Surprise! ❤️</button>
+    <!-- Login Modal -->
+    <div class="login-modal">
+        <h2>Enter Your Name</h2>
+        <input type="text" id="username" placeholder="Enter your name" />
+        <button onclick="validateLogin()">Submit</button>
+    </div>
 
-    <div class="message-box">
+    <!-- Valentine Surprise -->
+    <button class="btn" onclick="showMessageBox()" style="display: none;">Tap for a Surprise! ❤️</button>
+
+    <div class="message-box" style="display: none;">
         <div class="question">Will You Be My Forever Love? 💍💕</div>
         <div class="romantic-lines">
             "You are the love story I always wished to write."
